@@ -13,7 +13,7 @@ $(document).ready(function () {
             console.log("Local Access. Using local api.")
         } else {
             // ネット上へのアクセスの場合の処理
-            url = 'https://h4re-chat-system-1.onrender.com:3000/api/get_prompt';
+            url = 'https://h4re-chat-system-1.onrender.com/api/get_prompt';
         }
         
         // AJAXリクエストを送信
