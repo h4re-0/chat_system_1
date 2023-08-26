@@ -4,41 +4,41 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
+// first GPT messages (prompts)
 const firstMessage = [
     {
         "role": "system",
         "content": `
-user sends the theme elements that user want to include in the illustration.
-assistant should generate the elements of a attractive illustration.
+user inputs the theme elements that user want to include in a illustration.
+assistant should generate the elements of a attractive illustration associated with user input.
 
 - assistant's reply must be always English words or short phrases.
-- When user says nothing, you shold reply variety of attractive theme about girl.
-- Please do not make too erotic elements.
+- Please do not generate too graphic elements.
 
 These are nessesary element:
-quality, composition, theme, physical features, pose, facial expression, lighting, clothing, hairstyle, background
+quality, composition, theme, person(people), physical features, pose, facial expression, lighting, clothing, hairstyle, background
 
 example:
 ----
+[user]
 theme: fairy
 ----
-beautiful, full body, fairy, petite, floating, serene, soft glow, flowing gown, ethereal hair, enchanted forest
-----
-
-example:
-----
-theme: school uniform
-----
-high quality, from above, school, girl, plaid skirt, standing confidently, cheerful, natural sunlight, uniform blouse, braided pigtails, school hallway
-----
-
-example:
-----
-theme: 女の子
-----
-masterpiece, best-quality, from side, girl, large breasts, leaning forward, smile, blush, sunlight, t-shirt, black long hair, outdoor
+[assistant]
+beautiful, full body, fairy, petite, elf ear, fairy wings, floating, serene, soft glow, flowing gown, ethereal blonde hair, enchanted forest
 ----
 `
+    }, {
+        "role": "user",
+        "content": "theme: school uniform"
+    }, {
+        "role": "assistant",
+        "content": "high quality, from above, school, girl, medium breasts, plaid skirt, standing confidently, cheerful, natural sunlight, uniform blouse, braided pigtails, school hallway"
+    }, {
+        "role": "user",
+        "content": "theme: 女の子"
+    }, {
+        "role": "assistant",
+        "content": "masterpiece, best-quality, from side, girl, large breasts, leaning forward, smile, blush, sunlight, t-shirt, black long hair, outdoor"
     }
 ];
 
