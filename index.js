@@ -2,11 +2,10 @@ const gpt = require('./gpt');
 
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
-// HTMLファイルを返すルートエンドポイント
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
+// CORSポリシーを設定する
+app.use(cors());
 
 // APIエンドポイント
 app.get('/api/get_prompt', async (req, res) => {
@@ -22,8 +21,8 @@ app.get('/api/get_prompt', async (req, res) => {
     res.json(data);
 });
 
-// 画像ファイルを提供するディレクトリを指定する
-app.use('/', express.static(__dirname + '/public'));
+// ファイルを提供するディレクトリを指定する
+app.use('/', express.static(__dirname + '/docs'));
 
 // ファイルが見つからなかった場合のエラーハンドリング
 app.use((req, res, next) => {
@@ -32,10 +31,10 @@ app.use((req, res, next) => {
 
 // サーバーを起動します
 app.listen(3000, () => {
-    console.log('http://localhost:3000/');
+    console.log('Server alive! http://localhost:3000/index.html');
 });
 
-// SIGINTイベントが発生した場合にアプリケーションを終了する例
+// SIGINTイベントが発生した場合にアプリケーションを終了する
 process.on('SIGINT', () => {
     console.log('アプリケーションを終了します');
     process.exit(0);
